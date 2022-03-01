@@ -1,5 +1,5 @@
 <template>
-  <header class="container.is-fullhd">
+  <header class="mb-6">
     <div>
       <ul class="has-background-light px-6 is-flex is-hidden-mobile  is-justify-content-space-between is-align-content-center">
         <li class="is-flex is-align-content-center py-3 ">
@@ -51,14 +51,17 @@
             <b-navbar-item href="#">
               Roupas
             </b-navbar-item>
-
           </b-navbar-dropdown>
+
             <b-navbar-item href="#">
               Vestidos
             </b-navbar-item>
+          <b-navbar-dropdown label="Acessórios">
             <b-navbar-item href="#">
               Acessórios 
             </b-navbar-item>
+          </b-navbar-dropdown>
+
           <b-navbar-item href="#">
             Liquidação
           </b-navbar-item>
@@ -86,7 +89,7 @@
             </b-navbar-item>
 
             <b-navbar-item tag="div">
-              <NuxtLink to="/home">
+              <NuxtLink to="/personal-data">
                 <span class="icon">
                   <i class="material-icons-outlined">shopping_bag</i>
                 </span>
@@ -95,6 +98,9 @@
         </template>
           </b-navbar>
     </div>
+    <section>
+      <Search/>
+    </section>
   </header>
 </template>
 
