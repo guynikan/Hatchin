@@ -1,7 +1,7 @@
 <template>
-  <header class="mb-6">
+  <header>
     <div>
-      <ul class="has-background-light px-6 is-flex is-hidden-mobile  is-justify-content-space-between is-align-content-center">
+      <ul class="has-background-primary-light px-6 is-flex is-hidden-mobile  is-justify-content-space-between is-align-content-center">
         <li class="is-flex is-align-content-center py-3 ">
           <span class="icon pr-2">
             <i class="material-icons-outlined">
@@ -32,10 +32,10 @@
           <span>Entrega rápida</span></li>
       </ul>
     </div>
-    <div class="p-6">
-      <b-navbar>
+    <div class="p-6 has-background-primary">
+      <b-navbar type="is-primary" class="has-background-primary">
         <template #brand>
-          <b-navbar-item class="pl-0 pr-6" tag="router-link" :to="{ path: '/' }">
+          <b-navbar-item class="pl-0 pr-6" tag="nuxt-link" to="/">
             <h1 class="is-size-2">
               EVABEL
             </h1>
@@ -49,19 +49,47 @@
           <b-navbar-item href="#">
             Jeans
           </b-navbar-item>
-          <b-navbar-dropdown label="Roupas">
-            <b-navbar-item href="#">
-              Roupas
-            </b-navbar-item>
+          <b-navbar-dropdown type="is-primary" collapsible label="Roupas">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
+                </div>
+              </div>
+
+              <div class="media-right is-hidden-mobile">
+                <figure class="image is-348x348">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                </figure>
+              </div>
+            </article>
           </b-navbar-dropdown>
 
-            <b-navbar-item href="#">
-              Vestidos
-            </b-navbar-item>
-          <b-navbar-dropdown label="Acessórios">
-            <b-navbar-item href="#">
-              Acessórios 
-            </b-navbar-item>
+          <b-navbar-item href="#">
+            Vestidos
+          </b-navbar-item>
+          <b-navbar-dropdown type="is-primary" collapsible label="Acessórios">
+            <article class="media">
+              <div class="media-content">
+                <div class="content">
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
+                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
+                </div>
+              </div>
+
+              <div class="media-right is-hidden-mobile">
+                <figure class="image is-348x348">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                </figure>
+              </div>
+            </article>
           </b-navbar-dropdown>
 
           <b-navbar-item href="#">
@@ -71,7 +99,6 @@
 
         <template #end>
             <b-navbar-item tag="div">
-
               <NuxtLink to="/favorites">
                 <span class="icon">
                   <i class="material-icons-outlined">favorite_border</i>
@@ -100,9 +127,7 @@
         </template>
           </b-navbar>
     </div>
-    <section>
       <Search/>
-    </section>
   </header>
 </template>
 

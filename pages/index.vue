@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container is-fullhd">
     <Banners/>
     <Brands/>
     <LatestProducts/>

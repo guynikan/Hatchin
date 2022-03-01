@@ -1,5 +1,5 @@
 <template>
-  <footer class="container.is-fullhd">
+  <footer>
     <div class="has-background-light px-6 is-flex is-justify-content-center">
       Footer here
     </div>
