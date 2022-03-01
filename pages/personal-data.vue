@@ -1,73 +1,60 @@
 <template>
-  <section class="container">
+  <section class="section column is-8 is-desktop">
     <form>
       <div class="columns">
-        <div class="column is-half">
-          <b-field label="Primeiro nome">
-            <b-input v-model="firstname"></b-input>
-          </b-field>
-        </div>
+        <b-field class="column is-half" label="Primeiro nome">
+        <b-input v-model="firstname"></b-input>
+        </b-field>
 
-        <div class="column is-half">
-          <b-field label="Último nome">
-            <b-input v-model="lastname"></b-input>
-          </b-field>
-        </div>
+        <b-field class="column is-half" label="Último nome">
+          <b-input v-model="lastname"></b-input>
+        </b-field>
       </div>
-      <div class="columns">
-        <div class="column is-three-quarters">
-          <b-field label="CPF">
-            <b-input v-model="cpf"></b-input>
-          </b-field>
-        </div>
-        <div class="column">
-          <b-field label="Data de nascimento">
-            <b-datepicker
-              v-model="selected"
-              :show-week-number="showWeekNumber"
-              :locale="pt-BR"
-              placeholder="Clique para selecionar"
-              icon="calendar-today"
-              :icon-right="selected ? 'close-circle' : ''"
-              icon-right-clickable
-              @icon-right-click="clearDate"
-              trap-focus>
-            </b-datepicker>
-          </b-field>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column is-half">
-          <b-field label="Telefone">
-            <b-input v-model="telefone"></b-input>
-          </b-field>
-        </div>
-        <div class="column is-half">
-          <b-field label="E-mail">
-            <b-input v-model="email"></b-input>
-          </b-field>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column is-half">
-          <b-field label="Senha atual">
-            <b-input type="password"
-              placeholder="********"
-              password-reveal
-            >
-            </b-input>
-          </b-field>
-        </div>
 
-        <div class="column is-half">
-          <b-field label="Nova senha">
-            <b-input type="password"
-              placeholder="********"
-              password-reveal
-            >
-            </b-input>
-          </b-field>
-        </div>
+      <div class="columns">
+        <b-field class="column is-three-quarters" label="CPF">
+          <b-input v-model="cpf"></b-input>
+        </b-field>
+
+        <b-field class="column" label="Data de nascimento">
+          <b-datepicker
+            v-model="selected"
+            :locale="locale"
+            placeholder="Clique para selecionar"
+            icon="calendar-today"
+            :icon-right="selected ? 'close-circle' : ''"
+            icon-right-clickable
+            trap-focus>
+            @icon-right-click="clearDate"
+          </b-datepicker>
+        </b-field>
+      </div>
+
+      <div class="columns">
+        <b-field class="column is-half" label="Telefone">
+          <b-input v-model="telefone"></b-input>
+        </b-field>
+        <b-field class="column is-half" label="E-mail">
+          <b-input v-model="email"></b-input>
+        </b-field>
+      </div>
+
+      <div class="columns">
+        <b-field class="column is-half" label="Senha atual">
+          <b-input type="password"
+            placeholder="********"
+            password-reveal
+          >
+          </b-input>
+        </b-field>
+
+        <b-field class="column is-half" label="Nova senha">
+          <b-input type="password"
+            placeholder="********"
+            password-reveal
+          >
+          </b-input>
+        </b-field>
       </div>
         <b-button type="is-primary" native-type="submit" class="my-6 ml-auto mr-auto" outlined>Salvar alterações</b-button>
     </form>
@@ -75,6 +62,19 @@
 </template>
 <script>
 export default {
-  layout: "sidebar"
+  layout: "authenticated",
+
+  data: () => {
+    return {
+      firstname: "",
+      lastname: "",
+      cpf: "",
+      selected: null,
+      telefone: "",
+      email: "",
+      locale: "pt-BR" ,
+
+    }
+  }
 }
 </script>
