@@ -1,0 +1,14 @@
+$dimensions: 16 24 32 48 64 96 128 348;
+
+@import "./scss/abstracts/colors";
+@import "./scss/abstracts/typography";
+
+@import "./scss/components/input";
+@import "./scss/components/link";
+@import "./scss/components/media";
+@import "./scss/components/navbar";
+@import "./scss/components/sidebar";
+
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

@@ -1,0 +1,10 @@
+$navbar-height: 1rem;
+$navbar-item-img-max-height: 100%;
+$navbar-dropdown-radius: 0;
+$navbar-dropdown-item-hover-color: $primary;
+
+.navbar-dropdown {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+  border-top: none!important;
+}
