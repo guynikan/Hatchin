@@ -36,7 +36,9 @@
       <b-navbar>
         <template #brand>
           <b-navbar-item class="pl-0 pr-6" tag="router-link" :to="{ path: '/' }">
-            EVABEL
+            <h1 class="is-size-2">
+              EVABEL
+            </h1>
           </b-navbar-item>
         </template>
 
