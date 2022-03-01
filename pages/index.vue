@@ -1,6 +1,11 @@
 <template>
   <div>
-    pagina principal
+    <Banners/>
+    <Brands/>
+    <LatestProducts/>
+    <SectionCategory/>
+    <SectionCategory/>
+    <Newsletter/>
   </div>
 </template>
 
