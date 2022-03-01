@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  layout: "sidebar"
+  layout: "authenticated"
 }
 </script>
 
