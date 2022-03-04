@@ -1,3 +1,10 @@
 $primary: #FFAA65;
 $primary-light: #FFBE8A;
 $primary-darker: #ED7617;
+
+$secondary: #49B8B4;
+$secondary-invert: rgba(0,0,0,0.7);
+$secondary-light: #72D3CF;
+$secondary-dark: #0E908B;
+
+$custom-colors: ("secondary": ($secondary, $secondary-invert, $secondary-light, $secondary-dark));
