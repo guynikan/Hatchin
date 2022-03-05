@@ -1,2 +1,10 @@
+@import '~bulma/sass/utilities/mixins';
+
 $input-icon-color: $primary;
 $input-radius: 0px;
+
+.custom-input {
+  @include tablet{
+    min-width: 30ch;
+  }
+}
