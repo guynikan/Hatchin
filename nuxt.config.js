@@ -22,7 +22,9 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/main.scss'
+    '@/assets/main.scss',
+    '@fortawesome/fontawesome-free/css/all.css'
+
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -46,18 +48,25 @@ export default {
     ]
   },
 
-  fontawesome: {
-    icons: {
-      solid: true,
-      brands: true
-    }
-  },
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
   ],
+
+  buefy: {
+    defaultIconPack: 'fas',
+    defaultIconComponent: 'FontAwesomeIcon',
+    materialDesignIcons: false
+  },
+
+  fontawesome: {
+    icons: {
+      // solid: true,  // include the full pack in the bundle, not recommended
+      solid: true,
+      brands: ['faCcVisa', 'faCcMastercard','faCcAmex', 'faCcDinersClub', 'faCcJcb','faCcDiscover', 'faFacebook', 'faInstagram', 'faTiktok' ]
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
