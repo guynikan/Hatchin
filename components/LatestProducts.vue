@@ -1,5 +1,5 @@
 <template>
-  <section class="section my-6">
+  <section class="section my-6 container is-fullhd">
     <h1 class="is-size-2 mb-5">Os recém chegados</h1>
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-6">

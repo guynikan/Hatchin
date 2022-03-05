@@ -1,8 +1,8 @@
 <template>
-  <section class="section my-6">
+  <section class="section my-6 container is-fullhd">
     <h1 class="is-size-2 mb-5">Jeans</h1>
 
-    <b-carousel-list class="is-shadowless" v-model="test" :data="items" :items-to-show="4">
+    <b-carousel-list v-model="test" class="is-shadowless" :data="items" :items-to-show="4">
       <template #item="list">
         <div class="card mx-2">
           <div class="card-image">
@@ -16,7 +16,7 @@
               <p class="title is-6">{{ list.title }}</p>
               <p class="subtitle is-7">@johnsmith</p>
               <b-field grouped >
-                <p class="control" v-if="list.rating">
+                <p v-if="list.rating" class="control">
                   <b-rate :value="list.rating" show-score disabled/>
                 </p>
                 <p class="control" style="margin-left: auto">

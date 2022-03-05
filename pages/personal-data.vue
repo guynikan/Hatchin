@@ -12,7 +12,7 @@
       </div>
 
       <div class="columns">
-        <b-field class="column is-three-quarters" label="CPF">
+        <b-field class="column is-two-thirds" label="CPF">
           <b-input v-model="cpf"></b-input>
         </b-field>
 

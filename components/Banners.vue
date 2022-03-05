@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="container is-fullhd">
         <b-carousel
             :pause-info="pauseInfo"
             :arrow="arrow"
