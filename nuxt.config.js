@@ -28,7 +28,9 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+
   plugins: [
+    '~/plugins/validate.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -37,6 +39,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/axios',
     '@nuxtjs/eslint-module',
     '@nuxtjs/fontawesome',
     '@nuxtjs/style-resources',
@@ -52,13 +55,14 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
+    '@nuxtjs/axios'
   ],
 
-  buefy: {
-    defaultIconPack: 'fas',
-    defaultIconComponent: 'FontAwesomeIcon',
-    materialDesignIcons: false
-  },
+  publicRuntimeConfig: {
+      axios: {
+        browserBaseURL: process.env.BROWSER_BASE_URL
+      }
+    },
 
   fontawesome: {
     icons: {
@@ -70,5 +74,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ["vee-validate/dist/rules"],
   }
 }
