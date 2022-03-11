@@ -7,6 +7,8 @@ $fullhd: 1366px + (2 * $gap);
 @import "./scss/abstracts/typography";
 
 @import "./scss/components/input";
+@import "./scss/components/checkbox";
+@import "./scss/components/table";
 @import "./scss/components/link";
 @import "./scss/components/media";
 @import "./scss/components/navbar";
