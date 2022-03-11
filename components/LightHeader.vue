@@ -1,6 +1,6 @@
 <template>
   <header class="mb-6">
-    <div class="p-6 is-flex is-justify-content-center">
+    <div class="p-6 is-flex is-justify-content-center has-background-primary">
       <NuxtLink to="/">
         <h1 class="is-size-1">
           EVABEL
