@@ -59,6 +59,7 @@
         <ul class="is-flex is-flex-direction-row">
           <li>
              <b-icon
+                custom-class="has-text-black"
                 pack="fab"
                 icon="cc-visa"
                 size="is-medium">
@@ -66,6 +67,7 @@
           </li>
           <li>
             <b-icon
+                custom-class="has-text-black"
                 pack="fab"
                 icon="cc-mastercard"
                 size="is-medium">
@@ -73,6 +75,7 @@
           </li>
           <li>
              <b-icon
+                custom-class="has-text-black"
                 pack="fab"
                 icon="cc-amex"
                 size="is-medium">
@@ -80,6 +83,7 @@
           </li>
           <li>
              <b-icon
+                custom-class="has-text-black"
                 pack="fab"
                 icon="cc-diners-club"
                 size="is-medium">
@@ -87,6 +91,7 @@
           </li>
           <li>
              <b-icon
+                custom-class="has-text-black"
                 pack="fab"
                 icon="cc-jcb"
                 size="is-medium">
@@ -94,6 +99,7 @@
           </li>
           <li>
              <b-icon
+                custom-class="has-text-black"
                 pack="fab"
                 icon="cc-discover"
                 size="is-medium">
