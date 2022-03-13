@@ -109,7 +109,13 @@
 
 
             <b-navbar-item tag="div">
-              <NuxtLink to="/login">
+              <NuxtLink v-if="!isAuthenticated" to="/login">
+                <span class="icon">
+                  <i class="material-icons-outlined">person</i>
+                </span>
+              </NuxtLink>
+
+              <NuxtLink v-else to="/personal-data">
                 <span class="icon">
                   <i class="material-icons-outlined">person</i>
                 </span>
@@ -133,5 +139,12 @@
 
 <script>
 export default {
+
+  computed: {
+    isAuthenticated () {
+      return this.$store.state.isAuthenticated 
+    }
+  },
+
 }
 </script>

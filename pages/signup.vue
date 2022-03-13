@@ -108,7 +108,6 @@ export default {
         })
         .catch(error => {
           if (error.response) {
-            // Request made and server responded
             toast({
               message: error.response.data.email[0],
               type: 'is-danger',
