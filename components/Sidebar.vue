@@ -17,7 +17,7 @@
           <b-menu-item class="is-uppercase" tag="nuxt-link" to="/favorites" label="Favoritos"></b-menu-item>
           <b-menu-item class="is-uppercase" tag="nuxt-link" to="/orders" label="Pedidos"></b-menu-item>
           <b-menu-item class="is-uppercase" tag="nuxt-link" to="/devolutions" label="Trocas e devoluções"></b-menu-item>
-          <b-menu-item class="is-uppercase" label="Sair"></b-menu-item>
+          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/logout" label="Sair"></b-menu-item>
         </b-menu-list>
       </b-menu>
     </div>

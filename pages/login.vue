@@ -45,6 +45,8 @@ export default {
   },
   layout: "light",
 
+  auth: 'guest',
+
   data() {
     return { 
       email: "",
@@ -53,28 +55,26 @@ export default {
   },
 
   methods: {
-    submitForm() {
-      this.$axios.defaults.headers.common.Authorization = ""
-
-      localStorage.removeItem("token")
-
+    async submitForm() {
       const formData = {
         email: this.email,
         password: this.password
       }
 
-      this.$axios
-        .post("/api/v1/token/login", formData)
-        .then(response => {
-          const token = response.data.auth_token
+      try {
+        await this.$auth.loginWith('local',  {
+          data: formData
+        })
+        toast({
+          message: 'Você entrou!',
+          type: 'is-success',
+          dismissible: true,
+          pauseOnHover: true,
+          duration: 2000,
+          position: 'bottom-right'
+        })
 
-          this.$store.commit('setToken', token)
-
-          this.$axios.defaults.headers.common.Authorization = "Token " + token
-
-          localStorage.setItem("token", token)
-      })
-      .catch(error => {
+      } catch (error) {
         if (error.response) {
           toast({
             message: error.response.data.email[0],
@@ -102,8 +102,8 @@ export default {
             duration: 2000,
             position: 'bottom-right'
           })
-        }})
-    }
+        }}
+      }
   }
 }
 </script>

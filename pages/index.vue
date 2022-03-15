@@ -14,6 +14,8 @@
 export default {
   name: 'HomePage',
 
+  auth: false,
+
   beforeCreate() {
     this.$store.commit('initializeStore')
 

@@ -109,13 +109,13 @@
 
 
             <b-navbar-item tag="div">
-              <NuxtLink v-if="!isAuthenticated" to="/login">
+              <NuxtLink v-if="loggedIn" to="/personal-data">
                 <span class="icon">
                   <i class="material-icons-outlined">person</i>
                 </span>
               </NuxtLink>
 
-              <NuxtLink v-else to="/personal-data">
+              <NuxtLink v-else to="/login">
                 <span class="icon">
                   <i class="material-icons-outlined">person</i>
                 </span>
@@ -138,12 +138,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
 
   computed: {
-    isAuthenticated () {
-      return this.$store.state.isAuthenticated 
-    }
+    ...mapState('auth', ['loggedIn'])
   },
 
 }

@@ -76,6 +76,8 @@ export default {
 
   layout: "light",
 
+  auth: 'guest',
+
   data() {
     return {
       email: "" ,
