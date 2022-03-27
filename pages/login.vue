@@ -62,7 +62,7 @@ export default {
       }
 
       try {
-        const response = await this.$auth.loginWith('local',  {
+        await this.$auth.loginWith('local',  {
           data: formData
         })
 
