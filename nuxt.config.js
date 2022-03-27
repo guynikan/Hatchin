@@ -56,28 +56,40 @@ export default {
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth-next'
   ],
 
   auth: {
-      strategies: {
-          local: {
-              endpoints: {
-                  login: {
-                      url: '/api/v1/token/login/',
-                      method: 'post',
-                      propertyName: 'access',
-                      altProperty: 'refresh'
-                  },
-                  logout: {},
-                  user: false
-              }
-          }
-      },
+    strategies: {
+      local: {
+        token: {
+          property: 'auth_token',
+          type: "Token"
+        },
+
+        user: {
+          property: "id"
+        },
+
+        endpoints: {
+          login: {
+            url: '/api/v1/token/login/',
+            method: 'post',
+          },
+          logout: {
+            url: '/api/v1/token/logout'
+          },
+           user: false,
+             // user: { url: '/api/v1/users/me'}
+        }
+      }
+    },
       redirect: {
-          login: '/',
+          login: '/login',
+          home: '/'
       },
   },
+
   router: {
       middleware: ['auth']
   },
