@@ -2,36 +2,26 @@ export const state = () => ({
   cart: {
     items: []
   },
-  isAuthenticated: false,
-  token: '',
+  customer: {
+    id: null,
+    first_name: "",
+    last_name: "",
+    cpf: "",
+    birthdate: undefined,
+    phone: "",
+    email: ""
+  },
   isLoading: false
 })
 
 export const mutations = {
-  initializeStore(state) {
-    if(process.client) {
-      if (localStorage.getItem('token')) {
-        state.token = localStorage.getItem('token')
-        state.isAuthenticated = true
-      } else {
-        state.token = ''
-        state.isAuthenticated = false
-      } 
-
-
-    }
-  },
   setIsLoading(state, status) {
     state.isLoading = status
   },
-  setToken(state, token) {
-    state.token = token
-    state.isAuthenticated = true
-  },  
-  removeToken(state) {
-    state.token = ''
-    state.isAuthenticated = false
-  },
+
+  setCustomer(state, payload) {
+    state.customer = { ...state.customer, ...payload}
+  }
 }
 
 export const actions = {
