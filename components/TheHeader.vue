@@ -109,7 +109,7 @@
 
 
             <b-navbar-item tag="div">
-              <NuxtLink v-if="loggedIn" to="/personal-data">
+              <NuxtLink v-if="loggedIn" to="/dashboard/personal-data">
                 <span class="icon">
                   <i class="material-icons-outlined">person</i>
                 </span>
@@ -124,7 +124,7 @@
             </b-navbar-item>
 
             <b-navbar-item tag="div">
-              <NuxtLink to="/personal-data">
+              <NuxtLink to="/dashboard/personal-data">
                 <span class="icon">
                   <i class="material-icons-outlined">shopping_bag</i>
                 </span>
