@@ -12,11 +12,11 @@
       </div>
       <b-menu class="is-custom-mobile">
         <b-menu-list>
-          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/personal-data" label="Meus dados"></b-menu-item>
-          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/addresses" label="Endereços"></b-menu-item>
-          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/favorites" label="Favoritos"></b-menu-item>
-          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/orders" label="Pedidos"></b-menu-item>
-          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/devolutions" label="Trocas e devoluções"></b-menu-item>
+          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/dashboard/personal-data" label="Meus dados"></b-menu-item>
+          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/dashboard/addresses" label="Endereços"></b-menu-item>
+          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/dashboard/favorites" label="Favoritos"></b-menu-item>
+          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/dashboard/orders" label="Pedidos"></b-menu-item>
+          <b-menu-item class="is-uppercase" tag="nuxt-link" to="/dashboard/devolutions" label="Trocas e devoluções"></b-menu-item>
           <b-menu-item class="is-uppercase" tag="nuxt-link" to="/logout" label="Sair"></b-menu-item>
         </b-menu-list>
       </b-menu>
