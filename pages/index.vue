@@ -15,19 +15,5 @@ export default {
   name: 'HomePage',
 
   auth: false,
-
-  beforeCreate() {
-    this.$store.commit('initializeStore')
-
-    const token = this.$store.state.token
-
-    if (token) {
-        this.$axios.defaults.headers.common.Authorization = "Token " + token
-    } else {
-        this.$axios.defaults.headers.common.Authorization = ""
-    }
-  },
-
-
 }
 </script>
