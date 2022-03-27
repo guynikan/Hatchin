@@ -62,9 +62,10 @@ export default {
       }
 
       try {
-        await this.$auth.loginWith('local',  {
+        const response = await this.$auth.loginWith('local',  {
           data: formData
         })
+
         toast({
           message: 'Você entrou!',
           type: 'is-success',
