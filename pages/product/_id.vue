@@ -102,7 +102,7 @@
             </div>
 
             <div>
-              <b-button style="width: 100%;" type="is-primary is-large">ADICIONAR À SACOLA</b-button>
+              <b-button style="width: 100%;" type="is-primary is-large" outlined>ADICIONAR À SACOLA</b-button>
             </div>
           </div>
         </div>
