@@ -1,0 +1,44 @@
+.product-detail {
+  width: 100%;
+}
+
+.product-colors {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.product-sizes {
+  & input:checked, & input:not(:checked) {
+    position: absolute;
+    left: -9999px;
+  }
+
+  & input:checked + label, & input:not(:checked) + label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: $primary-light;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+
+  & input:not(:checked) + label {
+    background-color: $secondary-disabled;
+  }
+
+  & input:checked label {
+    border: 2px solid black;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+
+}
+
