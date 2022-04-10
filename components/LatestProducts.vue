@@ -4,11 +4,13 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-6">
         <div class="tile">
-          <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification is-primary">
-              <p class="title">Vertical...</p>
-              <p class="subtitle">Top tile</p>
-            </article>
+          <div v-for="product in latestProducts" :key="product" class="tile is-parent is-vertical">
+            <NuxtLink :to="product.get_absolute_url">
+              <article class="tile is-child notification is-primary">
+                <p class="title">Vertical...</p>
+                <p class="subtitle">Top tile</p>
+              </article>
+            </NuxtLink>
             <article class="tile is-child notification is-warning">
               <p class="title">...tiles</p>
               <p class="subtitle">Bottom tile</p>
@@ -43,8 +45,6 @@
   </section>
 </template>
 <script>
-import axios from 'axios';
-
 export default {
   name: 'Home',
   data() {
@@ -54,19 +54,23 @@ export default {
   },
   mounted() {
     this.getLatestProducts()
+    this.getTypes()
   },
   methods: {
     async getLatestProducts() {
-      this.$store.commit('setIsLoading', true)
-      await axios
-        .get('/api/v1/latest-products/')
-        .then(response => {
-          this.latestProducts = response.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
-      this.$store.commit('setIsLoading', false)
+      const response = await this.$axios
+                                 .get('/api/v1/latest-products/')
+      this.latestProducts = await response.data
+      console.log('receba siiuuuuuu')
+    },
+
+    getTypes() {
+      this.latestProducts.forEach(async (product) => {
+        const response = await this.$axios
+                                   .get(`/api/v1/type/${product.type}`)
+        const data = await response.data
+        console.log('dadinho é o caraio', data)
+      })
     }
   }
 }
