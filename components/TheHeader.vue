@@ -53,17 +53,13 @@
             <article class="media">
               <div class="media-content">
                 <div class="content">
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Roupas</b-navbar-item>
+                  <b-navbar-item v-for="item in clothes" :key="item.label" style="padding-right: 10rem!important;" class="py-5">{{ item.label }}</b-navbar-item>
                 </div>
               </div>
 
               <div class="media-right is-hidden-mobile">
-                <figure class="image is-348x348">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                <figure class="image is-1by2">
+                  <img src="https://bulma.io/images/placeholders/480x600.png" alt="Image">
                 </figure>
               </div>
             </article>
@@ -76,11 +72,13 @@
             <article class="media">
               <div class="media-content">
                 <div class="content">
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
-                  <b-navbar-item style="padding-right: 10rem!important;" class="py-5">Acessórios</b-navbar-item>
+                  <b-navbar-item 
+                    v-for="acessory in acessories"
+                    :key="acessory.label" 
+                    style="padding-right:10rem!important;" 
+                    class="py-5">
+                      {{ acessory.label }}
+                  </b-navbar-item>
                 </div>
               </div>
 
@@ -99,7 +97,7 @@
 
         <template #end>
             <b-navbar-item tag="div">
-              <NuxtLink to="/favorites">
+              <NuxtLink to="/dashboard/favorites">
                 <span class="icon">
                   <i class="material-icons-outlined">favorite_border</i>
                 </span>
@@ -141,6 +139,28 @@
 import { mapState } from 'vuex';
 
 export default {
+
+  data() {
+    return {
+      acessories: [
+        { label: "Bolsas" },
+        { label: "Jóias" },
+        { label: "Óculos" },
+        { label: "Cintos" },
+      ],
+
+      clothes: [
+        { label: "Blusas" },
+        { label: "Calças" },
+        { label: "Camisas" },
+        { label: "Casacos e Jaquetas" },
+        { label: "Macacões" },
+        { label: "Saias" },
+        { label: "Shorts" },
+        { label: "Vestidos" },
+      ]
+    }
+  },
 
   computed: {
     ...mapState('auth', ['loggedIn'])
