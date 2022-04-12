@@ -16,6 +16,7 @@ $fullhd: 1366px + (2 * $gap);
 @import "./scss/components/gallery";
 @import "./scss/components/product";
 @import "./scss/components/card";
+@import "./scss/components/box";
 
 
 @import "~bulma";
