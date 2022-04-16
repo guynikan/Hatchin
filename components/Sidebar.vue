@@ -30,12 +30,13 @@ export default {
     return {
       expandOnHover: false,
       expandWithDelay: false,
-      mobile: "hide",
+      mobile: "fullwidth",
     };
   }
 };
 </script>
 <style lang="scss">
+
 $sidebar-box-shadow: 0px 0px;
 
 </style>
