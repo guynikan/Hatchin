@@ -43,17 +43,17 @@
         </template>
 
         <template #start>
-          <b-navbar-item href="#">
+          <b-navbar-item href="/catalog/news">
             Novidades
           </b-navbar-item>
-          <b-navbar-item href="#">
+          <b-navbar-item href="/catalog/jeans">
             Jeans
           </b-navbar-item>
           <b-navbar-dropdown type="is-primary" collapsible label="Roupas">
             <article class="media">
               <div class="media-content">
                 <div class="content">
-                  <b-navbar-item v-for="item in clothes" :key="item.label" style="padding-right: 10rem!important;" class="py-5">{{ item.label }}</b-navbar-item>
+                  <b-navbar-item v-for="item in clothes" :key="item.label" :href="item.url" style="padding-right: 10rem!important;" class="py-5">{{ item.label }}</b-navbar-item>
                 </div>
               </div>
 
@@ -65,7 +65,7 @@
             </article>
           </b-navbar-dropdown>
 
-          <b-navbar-item href="#">
+          <b-navbar-item href="/catalog/vestidos">
             Vestidos
           </b-navbar-item>
           <b-navbar-dropdown type="is-primary" collapsible label="Acessórios">
@@ -75,6 +75,7 @@
                   <b-navbar-item 
                     v-for="acessory in acessories"
                     :key="acessory.label" 
+                    :href="acessory.url"
                     style="padding-right:10rem!important;" 
                     class="py-5">
                       {{ acessory.label }}
@@ -90,7 +91,7 @@
             </article>
           </b-navbar-dropdown>
 
-          <b-navbar-item href="#">
+          <b-navbar-item href="/catalog/liquidacao">
             Liquidação
           </b-navbar-item>
         </template>
@@ -143,21 +144,21 @@ export default {
   data() {
     return {
       acessories: [
-        { label: "Bolsas" },
-        { label: "Jóias" },
-        { label: "Óculos" },
-        { label: "Cintos" },
+        { label: "Bolsas", url: "/catalog/bolsas"  },
+        { label: "Jóias", url: "/catalog/joias" },
+        { label: "Óculos", url: "/catalog/oculos" },
+        { label: "Cintos", url: "/catalog/cintos" },
       ],
 
       clothes: [
-        { label: "Blusas" },
-        { label: "Calças" },
-        { label: "Camisas" },
-        { label: "Casacos e Jaquetas" },
-        { label: "Macacões" },
-        { label: "Saias" },
-        { label: "Shorts" },
-        { label: "Vestidos" },
+        { label: "Blusas", url: "/catalog/blusas" },
+        { label: "Calças", url: "/catalog/calcas" },
+        { label: "Camisas", url: "/catalog/camisas" },
+        { label: "Casacos e Jaquetas", url: "/catalog/casacos" },
+        { label: "Macacões", url: "/catalog/macacoes" },
+        { label: "Saias", url: "/catalog/saias" },
+        { label: "Shorts", url: "/catalog/shorts" },
+        { label: "Vestidos", url: "/catalog/vestidos" },
       ]
     }
   },
