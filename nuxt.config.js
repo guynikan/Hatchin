@@ -89,6 +89,10 @@ export default {
           home: '/'
       },
   },
+  
+  env: {
+    baseurl: process.env.BROWSER_BASE_URL
+  },
 
   router: {
       middleware: ['auth']
