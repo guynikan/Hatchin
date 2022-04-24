@@ -111,7 +111,7 @@
         </div>
       </div>
     </section>
-    <SectionCategory :items="productsByCategory" />
+    <SectionCategory :items="relatedProducts" />
   </div>
 </template>
 <script>
@@ -129,7 +129,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['product']),
+    ...mapState(['product', 'relatedProducts']),
     ...mapGetters(['mainImage', 'imageAbsoluteUrl']),
 
     description() {
@@ -143,7 +143,7 @@ export default {
 
   created() {
     this.getProduct(this.$route.path)
-    this.getProductByCategory(this.product?.type?.category[0].id)
+    // this.getProductByCategory(this.product?.type?.category[0].id)
   },
 
   methods: {

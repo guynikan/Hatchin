@@ -4,6 +4,7 @@ export const state = () => ({
   },
   product: {},
   sectionProducts: [],
+  relatedProducts: [],
   mainImage: '',
   customer: {
     id: null,
@@ -38,20 +39,31 @@ export const mutations = {
 
   SET_SECTION_PRODUCTS: (state, products) => (state.sectionProducts = products),
 
+  SET_RELATED_PRODUTS: (state, products) => (state.relatedProducts = products),
+
   setCustomer(state, payload) {
     state.customer = { ...state.customer, ...payload }
   },
 }
 
-const imageDefault = ({ type }) => ( type.images.find(image => image.default).url.substring(1))
+const imageDefault = ({ type }) =>
+  type.images.find((image) => image.default).url.substring(1)
 
 export const actions = {
-  getProduct({ commit }, route) {
+  getProduct({ dispatch, commit }, route) {
     this.$axios.get(`/api/v1${route}`).then((product) => {
       commit('SET_PRODUCT', product.data[0])
       commit('SET_MAIN_IMAGE', imageDefault(product.data[0]))
-    })
 
+      dispatch('getProductByCategory', product.data[0])
+    })
+  },
+
+  getProductByCategory({ commit }, products) {
+    const { type } = products
+    this.$axios
+      .get(`/api/v1/product-category/${type.category[0].id}`)
+      .then((products) => (commit('SET_RELATED_PRODUTS', products.data)))
   },
 
   getSectionProducts({ commit, state }, categoryId) {
