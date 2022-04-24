@@ -4,89 +4,91 @@
       <div class="tile is-ancestor">
         <div class="tile is-2 mr-2">
           <div class="gallery-side">
-            <b-image
-              class="mb-2"
-              src="https://picsum.photos/600/400"
-              alt="A random image"
-              ratio="2by2"
-            ></b-image>
-            <b-image
-              class="mb-2"
-              src="https://picsum.photos/600/400"
-              alt="A random image"
-              ratio="2by2"
-            ></b-image>
-            <b-image
-              class="pb-2"
-              src="https://picsum.photos/600/400"
-              alt="A random image"
-              ratio="2by2"
-            ></b-image>
+            <div
+              v-for="image in images"
+              :key="image.id"
+              @click="setMainImage(image.url)"
+            >
+              <b-image
+                class="mb-2"
+                :src="imageAbsoluteUrl(image.url)"
+                :alt="image.name"
+                ratio="2by2"
+              ></b-image>
+            </div>
           </div>
         </div>
         <div class="tile is-5">
           <div class="gallery-main">
-            <b-image
-              src="https://picsum.photos/600/400"
-              alt="A random image"
-              ratio="4by5"
-            ></b-image>
+            <b-image :src="mainImage" ratio="4by5"></b-image>
           </div>
         </div>
         <div class="ml-2 tile">
           <div class="product-detail">
-            <h1 class="is-size-2 mb-5">product title</h1>
+            <h1 class="is-size-2 mb-5">{{ product.name }}</h1>
             <div class="is-flex">
               <p>Preço:</p>
               <span>R$</span>
-              <span>99,99</span>
+              <span>{{ product.price }}</span>
             </div>
-            <hr/>
+            <hr />
             <div class="mb-5">
               <div class="is-flex">
                 <p>Cor:</p>
                 <span>Akinawa</span>
               </div>
               <div class="is-flex">
-                <span class="product-colors" v-for="color in colors" :key="color" :style="{backgroundColor: color }"></span>
+                <span
+                  v-for="color in product.colors"
+                  :key="color"
+                  class="product-colors"
+                  :style="{ backgroundColor: color }"
+                ></span>
               </div>
             </div>
 
-            <div class="mb-5 is-flex is-justify-content-space-between is-align-items-center">
+            <div
+              class="mb-5 is-flex is-justify-content-space-between is-align-items-center"
+            >
               <div>
                 <p>Tamanhos:</p>
                 <div class="is-flex">
-                  <div class="product-sizes" v-for="size in sizes" :key="size">
-                    <input name="radio-group" :id="size" type="radio">
+                  <div
+                    v-for="size in product.sizes"
+                    :key="size"
+                    class="product-sizes"
+                  >
+                    <input :id="size" name="radio-group" type="radio" />
                     <label :for="size">{{ size }}</label>
                   </div>
                 </div>
               </div>
-              <a  @click="isModalActive = true">Ver medidas</a>
+              <a @click="isModalActive = true">Ver medidas</a>
               <b-modal v-model="isModalActive">
                 <p class="image is-2by2">
-                  <img src="https://buefy.org/static/img/placeholder-1280x960.png">
+                  <img
+                    src="https://buefy.org/static/img/placeholder-1280x960.png"
+                  />
                 </p>
               </b-modal>
             </div>
 
             <div class="mb-5">
-              <b-collapse 
-                class="card" 
-                animation="slide" 
-                aria-id="contentIdForA11y3">
+              <b-collapse
+                class="card"
+                animation="slide"
+                aria-id="contentIdForA11y3"
+              >
                 <template #trigger="props">
                   <div
                     class="card-header"
                     role="button"
                     aria-controls="contentIdForA11y3"
-                    :aria-expanded="props.open">
-                    <p class="card-header-title">
-                      Detalhes do produto
-                    </p>
+                    :aria-expanded="props.open"
+                  >
+                    <p class="card-header-title">Detalhes do produto</p>
                     <a class="card-header-icon">
-                      <b-icon
-                        :icon="props.open ? 'menu-down' : 'menu-up'">
+                      <b-icon :icon="props.open ? 'menu-down' : 'menu-up'">
                       </b-icon>
                     </a>
                   </div>
@@ -94,34 +96,69 @@
 
                 <div class="card-content">
                   <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                    <a>#buefy</a>.
+                    {{ description }}
                   </div>
                 </div>
               </b-collapse>
             </div>
 
             <div>
-              <b-button style="width: 100%;" type="is-primary is-large" outlined>ADICIONAR À SACOLA</b-button>
+              <b-button style="width: 100%" type="is-primary is-large" outlined
+                >ADICIONAR À SACOLA</b-button
+              >
             </div>
           </div>
         </div>
       </div>
     </section>
-    <SectionCategory />
+    <SectionCategory :items="productsByCategory" />
   </div>
 </template>
-  <script>
-  export default {
-    name: 'ProductDetail',
-    auth: false,
+<script>
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
-    data() {
-      return {
-        isModalActive: false,
-        colors: [ '#f1f', '#1f1', '#21f'],
-        sizes: [ 'P', 'M', 'G', 'GG']
-      }
+export default {
+  name: 'ProductDetail',
+  auth: false,
+
+  data() {
+    return {
+      isModalActive: false,
+      productsByCategory: [],
+    }
+  },
+
+  computed: {
+    ...mapState(['product']),
+    ...mapGetters(['mainImage', 'imageAbsoluteUrl']),
+
+    description() {
+      return this.product?.type?.description
     },
-  }
-  </script>
+
+    images() {
+      return this.product?.type?.images
+    },
+  },
+
+  created() {
+    this.getProduct(this.$route.path)
+    this.getProductByCategory(this.product?.type?.category[0].id)
+  },
+
+  methods: {
+    ...mapMutations(['SET_MAIN_IMAGE']),
+    ...mapActions(['getProduct', 'getSectionProducts']),
+
+    setMainImage(url) {
+      this.SET_MAIN_IMAGE(url.substring(1))
+    },
+
+    getProductByCategory(category) {
+      this.$axios
+        .get(`/api/v1/product-category/${category}/`)
+        .then((products) => (this.productsByCategory = products.data))
+    },
+  },
+}
+</script>
