@@ -133,8 +133,6 @@ export default {
         email: this.email,
       }
 
-      console.log('eeeeee jao', this.id, this.first_name)
-
       if(this.id) {
         try {
           await this.$axios.patch(`/api/v1/customer/${this.id}/`, formData)
