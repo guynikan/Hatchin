@@ -3,7 +3,6 @@
     <h1 class="is-size-2 mb-5">Jeans</h1>
 
     <b-carousel-list
-      v-model="test"
       class="is-shadowless"
       :data="items"
       :items-to-show="4"
