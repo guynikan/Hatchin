@@ -39,7 +39,6 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/axios',
     '@nuxtjs/eslint-module',
     '@nuxtjs/fontawesome',
     '@nuxtjs/style-resources',
@@ -54,10 +53,14 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
+    '@nuxt/http',
     'nuxt-buefy',
-    '@nuxtjs/axios',
     '@nuxtjs/auth-next'
   ],
+
+  http: {
+        baseURL: process.env.BROWSER_BASE_URL
+  },
 
   auth: {
     strategies: {
@@ -97,12 +100,6 @@ export default {
   router: {
       middleware: ['auth']
   },
-
-  publicRuntimeConfig: {
-      axios: {
-        browserBaseURL: process.env.BROWSER_BASE_URL
-      }
-    },
 
   fontawesome: {
     icons: {

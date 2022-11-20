@@ -2,9 +2,9 @@
   <div>
     <Banners />
     <Brands />
-    <LatestProducts />
+    <!-- <LatestProducts :items="latestProducts" /> -->
     <SectionCategory :items="categoryOne" />
-    <SectionCategory :items="categoryTwo" />
+    <!-- <SectionCategory :items="categoryTwo" /> -->
     <Newsletter />
   </div>
 </template>
@@ -14,29 +14,22 @@ export default {
   name: 'HomePage',
   auth: false,
 
-  asyncData({ $axios }) {
-    let latestProducts
-    let categoryOne
-    let categoryTwo
+  async asyncData({ $http }) {
+    // let latestProducts
+    // let categoryTwo
 
-    $axios.get('/api/v1/latest-products/').then(({ data }) => {
-      latestProducts = data
-    })
+    // $axios.$get('/api/v1/latest-products/').then((res) => {
+    //   latestProducts = res.data
+    // })
 
-    $axios.get(`/api/v1/product-category/1/`).then((res) => {
-      console.log('aaaaaaaaaaa', res)
-      categoryOne = res
-    })
-    $axios.get(`/api/v1/product-category/2/`).then(({ data }) => {
-      categoryTwo = data
-    })
-
-    console.log('kdddd', categoryOne)
-
+    const categoryOne = await $http.$get(`/api/v1/product-category/1/`)
+    // $axios.$get(`/api/v1/product-category/2/`).then((res) => {
+    //   categoryTwo = res.data
+    // })
     return {
-      latestProducts,
+      // latestProducts,
       categoryOne,
-      categoryTwo,
+      // categoryTwo,
     }
   },
 }
