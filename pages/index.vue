@@ -14,29 +14,20 @@ export default {
   name: 'HomePage',
   auth: false,
 
-  data() {
+  async asyncData({ $axios }) {
+    const latestProducts = await $axios.get(
+      'http://localhost:8000/api/v1/latest-products/'
+    )
+
+    const categoryOne = await $axios.get(`/api/v1/product-category/1/`)
+
+    const categoryTwo = await $axios.get(`/api/v1/product-category/2/`)
+
     return {
-      categoryOne: [],
-      categoryTwo: [],
+      latestProducts,
+      categoryOne,
+      categoryTwo,
     }
-  },
-
-  mounted() {
-    this.getProductsByCategory()
-  },
-
-  methods: {
-    getProductsByCategory() {
-      this.$axios.get(`/api/v1/product-category/1/`)
-      .then((products) => {
-          this.categoryOne = products.data
-        })
-
-      this.$axios.get(`/api/v1/product-category/2/`)
-      .then((products) => {
-          this.categoryTwo = products.data
-        })
-    },
   },
 }
 </script>

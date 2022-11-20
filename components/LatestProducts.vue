@@ -50,9 +50,11 @@ export default {
     }
   },
 
-  async fetch() {
-    const products = await this.$axios.get('http://localhost:8000/api/v1/latest-products/')
-    this.latestProducts = products.data
+  fetch() {
+    this.$axios
+      .get('http://localhost:8000/api/v1/latest-products/')
+      .then(({ data }) => (this.latestProducts = data))
+      .catch((e) => { console.log("tome", e)})
   },
 
   computed: {
