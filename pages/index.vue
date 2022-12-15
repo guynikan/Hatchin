@@ -2,9 +2,9 @@
   <div>
     <Banners />
     <Brands />
-    <!-- <LatestProducts :items="latestProducts" /> -->
-    <SectionCategory :items="categoryOne" />
-    <!-- <SectionCategory :items="categoryTwo" /> -->
+    <LatestProducts :items="latestProducts" />
+    <SectionCategory :items="categoryOne" :category="categoryNameOne" />
+    <SectionCategory :items="categoryTwo" :category="categoryNameTwo" />
     <Newsletter />
   </div>
 </template>
@@ -15,22 +15,25 @@ export default {
   auth: false,
 
   async asyncData({ $http }) {
-    // let latestProducts
-    // let categoryTwo
-
-    // $axios.$get('/api/v1/latest-products/').then((res) => {
-    //   latestProducts = res.data
-    // })
+    const latestProducts = await $http.$get('/api/v1/latest-products/')
 
     const categoryOne = await $http.$get(`/api/v1/product-category/1/`)
-    // $axios.$get(`/api/v1/product-category/2/`).then((res) => {
-    //   categoryTwo = res.data
-    // })
+    const categoryTwo = await $http.$get(`/api/v1/product-category/2/`)
+
     return {
-      // latestProducts,
+      latestProducts,
       categoryOne,
-      // categoryTwo,
+      categoryTwo,
     }
   },
+
+  computed: {
+    categoryNameOne(){
+      return this.categoryOne[0].type?.category[0].name
+    },
+    categoryNameTwo(){
+      return this.categoryTwo[0].type?.category[0].name
+    }
+  }
 }
 </script>

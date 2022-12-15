@@ -35,11 +35,14 @@ export const mutations = {
 
   SET_MAIN_IMAGE: (state, image) => (state.mainImage = image),
 
-  SET_PRODUCT: (state, product) => (state.product = product),
+  SET_PRODUCT: (state, product) => {
+    console.log('aqui chega')
+    return (state.product = product)
+  },
 
   SET_SECTION_PRODUCTS: (state, products) => (state.sectionProducts = products),
 
-  SET_RELATED_PRODUTS: (state, products) => (state.relatedProducts = products),
+  SET_RELATED_PRODUCTS: (state, products) => (state.relatedProducts = products),
 
   setCustomer(state, payload) {
     state.customer = { ...state.customer, ...payload }
@@ -50,25 +53,27 @@ const imageDefault = ({ type }) =>
   type.images.find((image) => image.default).url.substring(1)
 
 export const actions = {
-  getProduct({ dispatch, commit }, route) {
-    this.$axios.get(`/api/v1${route}`).then((product) => {
-      commit('SET_PRODUCT', product.data[0])
-      commit('SET_MAIN_IMAGE', imageDefault(product.data[0]))
+  async getProduct({ dispatch, commit }, route) {
+    const product = await this.$http.$get(`/api/v1${route}`)
 
-      dispatch('getProductByCategory', product.data[0])
-    })
+    commit('SET_PRODUCT', product[0])
+    commit('SET_MAIN_IMAGE', imageDefault(product[0]))
+
+    dispatch('getProductByCategory', product[0])
   },
 
-  getProductByCategory({ commit }, products) {
-    const { type } = products
-    this.$axios
-      .get(`/api/v1/product-category/${type.category[0].id}`)
-      .then((products) => (commit('SET_RELATED_PRODUTS', products.data)))
+  async getProductByCategory({ commit }, product) {
+    const { type } = product
+    const related = await this.$http
+      .$get(`/api/v1/product-category/${type.category[0].id}`)
+
+
+    commit('SET_RELATED_PRODUCTS', related)
   },
 
   getSectionProducts({ commit, state }, categoryId) {
-    this.$axios
-      .get(`/api/v1/product-category/${categoryId}`)
+    this.$http
+      .$get(`/api/v1/product-category/${categoryId}`)
       .then((products) => {
         commit('SET_SECTION_PRODUCTS', products.data)
       })

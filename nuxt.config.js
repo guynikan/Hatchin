@@ -16,7 +16,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp'}
+      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp' }
     ]
   },
 
@@ -53,13 +53,19 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
+    '@nuxtjs/axios',
     '@nuxt/http',
     'nuxt-buefy',
     '@nuxtjs/auth-next'
   ],
 
+  axios: {
+    baseURL: process.env.BROWSER_BASE_URL
+
+  },
+
   http: {
-        baseURL: process.env.BROWSER_BASE_URL
+    baseURL: process.env.BROWSER_BASE_URL
   },
 
   auth: {
@@ -82,30 +88,30 @@ export default {
           logout: {
             url: '/api/v1/token/logout'
           },
-           user: false,
-             // user: { url: '/api/v1/users/me'}
+          user: false,
+          // user: { url: '/api/v1/users/me'}
         }
       }
     },
-      redirect: {
-          login: '/login',
-          home: '/'
-      },
+    redirect: {
+      login: '/login',
+      home: '/'
+    },
   },
-  
+
   env: {
     baseurl: process.env.BROWSER_BASE_URL
   },
 
   router: {
-      middleware: ['auth']
+    middleware: ['auth']
   },
 
   fontawesome: {
     icons: {
       // solid: true,  // include the full pack in the bundle, not recommended
       solid: true,
-      brands: ['faCcVisa', 'faCcMastercard','faCcAmex', 'faCcDinersClub', 'faCcJcb','faCcDiscover', 'faFacebook', 'faInstagram', 'faTiktok' ]
+      brands: ['faCcVisa', 'faCcMastercard', 'faCcAmex', 'faCcDinersClub', 'faCcJcb', 'faCcDiscover', 'faFacebook', 'faInstagram', 'faTiktok']
     }
   },
 

@@ -1,40 +1,14 @@
 <template>
   <section class="section my-6 container is-fullhd">
     <h1 class="is-size-2 mb-5">Os recém chegados</h1>
-    <div class="tile is-ancestor">
-      <div class="tile is-vertical is-6">
-        <div class="tile">
-          <div class="tile is-parent is-vertical">
-            <NuxtLink
-              v-for="product in firstHalf"
-              :key="product.id"
-              :to="product.get_absolute_url"
-              class="tile is-child notification is-primary"
-              :style="{
-                backgroundImage: `url(${getImage(product)})`,
-                backgroundPosition: '50% 50%',
-                backgroundSize: 'cover',
-              }"
-            >
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-      <div class="tile is-parent">
-        <article
-          class="tile is-child notification is-success"
-          :style="{
-            backgroundImage: `url(${imageAbsoluteUrl(mainProduct.image.url)})`,
-            height: '500px',
-            backgroundPosition: '50% 50%',
-            backgroundSize: 'cover',
-          }"
-        >
-          <div class="content">
-            <div class="content"></div>
-          </div>
-        </article>
-      </div>
+    <div class="tile is-parent">
+      <article v-for="item in items" :key="item.id" class="tile is-child box">
+        <p class="title">{{ item.name }}</p>
+        <figure class="image is-3by2">
+          <a :href="item.get_absolute_url"><img :src="mainImage(item.type.images)" 
+            :style="{ 'object-fit': 'cover'}" /></a>
+        </figure>
+      </article>
     </div>
   </section>
 </template>
@@ -80,6 +54,11 @@ export default {
   },
 
   methods: {
+    mainImage(images) {
+      const imgDefault = images.find((img) => img.default).url
+
+      return this.imageAbsoluteUrl(imgDefault)
+    },
     getImage(product) {
       const {
         type: { images },

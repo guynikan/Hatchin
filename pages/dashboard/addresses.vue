@@ -100,8 +100,8 @@ export default {
       this.addresses.push(address)
     },
     async getAddresses(){
-      const response = await this.$axios
-                                 .get('api/v1/address')
+      const response = await this.$http
+                                 .$get('api/v1/address')
       const formData = await response.data
 
       if(!formData) {
@@ -123,7 +123,7 @@ export default {
 
       if(formData.id) {
         try {
-          await this.$axios.patch(`/api/v1/address/${formData.id}/`, formData)
+          await this.$http.$patch(`/api/v1/address/${formData.id}/`, formData)
           // TODO add toast success message
         } catch(error) {
           // TODO handling errors messages in validation fields messages
@@ -131,7 +131,7 @@ export default {
         }
       } else {
         try {
-          await this.$axios.post('/api/v1/address/', formData)
+          await this.$http.$post('/api/v1/address/', formData)
           // TODO add toast success message
         } catch(error) {
           // TODO handling errors messages in validation fields messages

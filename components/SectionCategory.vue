@@ -1,6 +1,6 @@
 <template>
   <section class="section my-6 container is-fullhd">
-    <h1 class="is-size-2 mb-5">Jeans</h1>
+    <h1 class="is-size-2 mb-5">{{ category }}</h1>
 
     <b-carousel-list
       class="is-shadowless"
@@ -49,6 +49,10 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: {
+    category: {
+      type: String,
+      default: () => ""
+    },
     items: {
       type: Array,
       default: () => [],
